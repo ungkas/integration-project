@@ -13,7 +13,7 @@
 Run an docker-compose file by copying the given example.
 
 ```
-$ docker compose up -d
+$ docker-compose up -d
 ```
 
 ## Developer Guide
