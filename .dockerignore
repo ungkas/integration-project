@@ -1,0 +1,12 @@
+LICENSE
+VERSION
+README.md
+Changelog.md
+Makefile
+docker-compose.yml
+odoo-openapi.yml
+__pycache__
+*.pyc
+*.png
+.git
+.gitignore

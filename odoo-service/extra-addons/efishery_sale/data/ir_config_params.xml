@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="external_client_token" model="ir.config_parameter">
+            <field name="key">external.client_token</field>
+            <field name="value">ABC</field>
+        </record>
+
+        <record id="interceptor_webhook_token" model="ir.config_parameter">
+            <field name="key">interceptor.webhook_token</field>
+            <field name="value">Bearer XYZ</field>
+        </record>
+
+        <record id="interceptor_webhook_url" model="ir.config_parameter">
+            <field name="key">interceptor.webhook_url</field>
+            <field name="value">http://host.docker.internal:8000/webhook</field>
+        </record>
+
+    </data>
+</odoo>

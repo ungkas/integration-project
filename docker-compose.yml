@@ -1,0 +1,48 @@
+version: '3.2'
+services:
+  db:
+    image: postgres:10
+    container_name: db-service
+    environment:
+      - POSTGRES_PASSWORD=odoo14
+      - POSTGRES_USER=odoo14
+      - POSTGRES_DB=postgres
+    ports:    
+      - "5434:5432"
+    volumes:
+      - db-service-data:/var/lib/postgresql/data
+
+  odoo:
+    image: odoo:14.0
+    container_name: odoo-service
+    tty: true
+    environment:
+      - HOST=db
+      - USER=odoo14
+      - PASSWORD=odoo14
+    depends_on:   
+      - db
+    ports:
+      - "9000:8069"
+    volumes:
+      - odoo-service-data:/var/lib/odoo
+      - ./odoo-service/odoo-config:/etc/odoo
+      - ./odoo-service/extra-addons:/mnt/extra-addons
+    command: -d efishery -i efishery_sale
+
+  interceptor:
+    container_name: interceptor-service
+    build:
+      context: ./interceptor-service
+      dockerfile: Dockerfile
+    tty: true
+    environment:
+      - DEBUG=1
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./interceptor-service/app:/app
+
+volumes:
+  db-service-data:
+  odoo-service-data:
